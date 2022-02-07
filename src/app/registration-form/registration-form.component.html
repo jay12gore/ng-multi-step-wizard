@@ -1,0 +1,43 @@
+<!-- MultiStep Form -->
+<div class="container-fluid" id="grad1">
+    <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2><strong>Sign Up Your User Account</strong></h2>
+                <p>Fill all form field to go to next step</p>
+                <div class="row">
+                    <div class="col-md-12 mx-0">
+                        <form id="msform">
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="account"><strong>Personal</strong></li>
+                                <li [ngClass]="{'active': step === 'step2' || step === 'step3' || step === 'step4'}" id="personal"><strong>Contact</strong></li>
+                                <li [ngClass]="{'active': step === 'step3' || step === 'step4'}" id="payment"><strong>Address</strong></li>
+                                <li [ngClass]="{'active': step === 'step4'}" id="confirm"><strong>Preview</strong></li>
+                            </ul> 
+                            <!-- divs -->
+                            <div *ngIf="step === 'step1'">
+                                <app-personal-details></app-personal-details>
+                            </div>
+                            <div *ngIf="step === 'step2'">
+                                <app-contact-details></app-contact-details>
+                            </div>
+                            <div *ngIf="step === 'step3'">
+                                <app-address-details></app-address-details>
+                            </div>
+                            <div *ngIf="step === 'step4'">
+                                <div class="form-card">
+                                    <h2 class="fs-title text-center">Preview All Details</h2> <br><br>
+                                    <app-preview-all-details></app-preview-all-details>
+                                </div>
+                            </div>
+                            <input type="button" *ngIf="isPrevious" name="previous" class="previous action-button-previous" value="Previous" (click)="previousStep($event)" /> 
+                            <input type="button" *ngIf="isNext" name="next" class="next action-button" value="Next Step" (click)="nextStep($event)" />
+                            <button type="button" *ngIf="isSubmit" class="btn btn-info" (click)="submit($event)">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

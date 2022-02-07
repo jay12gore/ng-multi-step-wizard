@@ -1,0 +1,45 @@
+<div class="form-card p-3">
+    <h2 class="fs-title">Address Details</h2>
+    <form [formGroup]="addressDetailsForm" *ngIf="addressDetailsForm">
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="street" placeholder="Street" 
+                [ngClass]="{'isRequired': (addressDetailsForm.controls?.['street']?.errors?.['required'] && addressDetailsForm.controls?.['street'].dirty) 
+                || (isSubmitted && addressDetailsForm.controls?.['street']?.errors?.['required'])}"/>
+            <span *ngIf="(addressDetailsForm.controls?.['street']?.errors?.['required'] && addressDetailsForm.controls?.['street'].dirty) 
+                || (isSubmitted && addressDetailsForm.controls?.['street']?.errors?.['required'])">
+                Street is required
+            </span>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="city" placeholder="City" 
+                [ngClass]="{'isRequired': (addressDetailsForm.controls?.['city']?.errors?.['required'] && addressDetailsForm.controls?.['city'].dirty) 
+                || (isSubmitted && addressDetailsForm.controls?.['city']?.errors?.['required'])}"/>
+            <span *ngIf="(addressDetailsForm.controls?.['city']?.errors?.['required'] && addressDetailsForm.controls?.['city'].dirty) 
+                || (isSubmitted && addressDetailsForm.controls?.['city']?.errors?.['required'])">
+                City is required
+            </span>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="zip" placeholder="Zip" 
+                [ngClass]="{'isRequired': (addressDetailsForm.controls?.['zip']?.errors?.['required'] && addressDetailsForm.controls?.['zip'].dirty) 
+                || (isSubmitted && addressDetailsForm.controls?.['zip']?.errors?.['required'])}"/>
+            <span *ngIf="(addressDetailsForm.controls?.['zip']?.errors?.['required'] && addressDetailsForm.controls?.['zip'].dirty) 
+                || (isSubmitted && addressDetailsForm.controls?.['zip']?.errors?.['required'])">
+                Zip is required
+            </span>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="state" placeholder="State" autocomplete="off"
+                (keyup)="getStateNames()" list="dynmicStates" 
+                [ngClass]="{'isRequired': (addressDetailsForm.controls?.['state']?.errors?.['required'] && addressDetailsForm.controls?.['state'].dirty) 
+                || (isSubmitted && addressDetailsForm.controls?.['state']?.errors?.['required'])}"/>
+            <datalist id="dynmicStates">
+                <option *ngFor="let item of stateList" [value]="item.name">{{item.name}}</option>
+            </datalist>
+            <span *ngIf="(addressDetailsForm.controls?.['state']?.errors?.['required'] && addressDetailsForm.controls?.['state'].dirty) 
+                || (isSubmitted && addressDetailsForm.controls?.['state']?.errors?.['required'])">
+                State is required
+            </span>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<div class="form-card p-3">
+    <h2 class="fs-title">Contact Details</h2>
+    <form [formGroup]="contactDetailsForm" *ngIf="contactDetailsForm">
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="phone" placeholder="( _ _ _ ) - _ _ _ - _ _ _ _ " maxlength="14" appPhoneMask 
+                [ngClass]="{'isRequired': (contactDetailsForm.controls?.['phone']?.errors?.['required'] && contactDetailsForm.controls?.['phone'].dirty) 
+                || (isSubmitted && contactDetailsForm.controls?.['phone']?.errors?.['required'] || contactDetailsForm.controls?.['phone']?.errors?.pattern)}"/>
+            <span *ngIf="(contactDetailsForm.controls?.['phone']?.errors?.['required'] && contactDetailsForm.controls?.['phone'].dirty) 
+                || (isSubmitted && contactDetailsForm.controls?.['phone']?.errors?.['required'])">
+                Phone is required
+            </span>
+            <span *ngIf="contactDetailsForm.controls?.['phone']?.errors?.pattern">Enter Valid Phone</span>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="email" placeholder="Email Id" 
+                [ngClass]="{'isRequired': (contactDetailsForm.controls?.['email']?.errors?.['required'] && contactDetailsForm.controls?.['email'].dirty) 
+                || (isSubmitted && contactDetailsForm.controls?.['email']?.errors?.['required'] || contactDetailsForm.controls?.['email']?.errors?.pattern)}"/>
+            <span *ngIf="(contactDetailsForm.controls?.['email']?.errors?.['required'] && contactDetailsForm.controls?.['email'].dirty) 
+                || (isSubmitted && contactDetailsForm.controls?.['email']?.errors?.['required'])">
+                Email is required
+            </span>
+            <span *ngIf="contactDetailsForm.controls?.['email']?.errors?.pattern">Enter Valid Email</span>
+        </div>
+    </form>
+</div>

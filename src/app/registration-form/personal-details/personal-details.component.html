@@ -1,0 +1,41 @@
+<div class="form-card p-3">
+    <h2 class="fs-title">Personal Details</h2>
+    <form [formGroup]="personalDetailsForm" *ngIf="personalDetailsForm">
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="fname" placeholder="First Name" 
+                [ngClass]="{'isRequired': (personalDetailsForm.controls?.['fname']?.errors?.['required'] && personalDetailsForm.controls?.['fname'].dirty) 
+                || (isSubmitted && personalDetailsForm.controls?.['fname']?.errors?.['required'])}"/>
+            <span *ngIf="(personalDetailsForm.controls?.['fname']?.errors?.['required'] && personalDetailsForm.controls?.['fname'].dirty) 
+                || (isSubmitted && personalDetailsForm.controls?.['fname']?.errors?.['required'])">
+                First Name is required
+            </span>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control" formControlName="lname" placeholder="Last Name" 
+                [ngClass]="{'isRequired': (personalDetailsForm.controls?.['lname']?.errors?.['required'] && personalDetailsForm.controls?.['lname'].dirty) 
+                || (isSubmitted && personalDetailsForm.controls?.['lname']?.errors?.['required'])}"/>
+            <span *ngIf="(personalDetailsForm.controls?.['lname']?.errors?.['required'] && personalDetailsForm.controls?.['lname'].dirty) 
+                || (isSubmitted && personalDetailsForm.controls?.['lname']?.errors?.['required'])">
+                Last Name is required
+            </span>
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control" formControlName="age" placeholder="Age" 
+                [ngClass]="{'isRequired': (personalDetailsForm.controls?.['age']?.errors?.['required'] && personalDetailsForm.controls?.['age'].dirty) 
+                || (isSubmitted && personalDetailsForm.controls?.['age']?.errors?.['required'])}"/>
+            <span *ngIf="(personalDetailsForm.controls?.['age']?.errors?.['required'] && personalDetailsForm.controls?.['age'].dirty) 
+                || (isSubmitted && personalDetailsForm.controls?.['age']?.errors?.['required'])">
+                Age is required
+            </span>
+        </div>
+        <div class="mb-3">
+            <input type="date" class="form-control" formControlName="dob" placeholder="Date of Birth" 
+                [ngClass]="{'isRequired': (personalDetailsForm.controls?.['dob']?.errors?.['required'] && personalDetailsForm.controls?.['dob'].dirty) 
+                || (isSubmitted && personalDetailsForm.controls?.['dob']?.errors?.['required'])}"/>
+            <span *ngIf="(personalDetailsForm.controls?.['dob']?.errors?.['required'] && personalDetailsForm.controls?.['dob'].dirty) 
+                || (isSubmitted && personalDetailsForm.controls?.['dob']?.errors?.['required'])">
+                Date of Birth is required
+            </span>
+        </div>
+    </form>
+</div>
